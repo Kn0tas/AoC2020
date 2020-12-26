@@ -1,5 +1,6 @@
 #Solution 2 december 2020
 
+"""
 with open("aoc2dec.txt", "r") as file:  # Open aoc text file and store as "file"
     input = file.readlines()            # Read each line of "file" and store each line in list as a string in "input"
 
@@ -23,6 +24,43 @@ for lines in line_input:
 
 print(num_of_valid_passwords_1)
 print(num_of_valid_passwords_2)
+
+"""
+import math
+#Solution 3 december 2020
+
+with open("aoc3dec.txt", "r") as file:  # Open aoc text file and store as "file"
+    input = file.readlines()            # Read each line of "file" and store each line in list as a string in "input"
+
+line_input = [i.split("\n")[0] for i in input] # Split "input" to get rid of \n as in "input" and store as line_input.
+
+column = 0
+row = 0
+tree_count = [0, 0, 0, 0, 0]
+row_step = [1, 1, 1, 1, 2]
+column_step = [1, 3, 5, 7, 1]
+for x in range(5):
+    print(x)
+    for line in line_input:
+        if row < len(line_input) and line_input[row][column] == "#":
+            tree_count[x] = tree_count[x] + 1
+
+        column = column + column_step[x]
+        row = row + row_step[x]
+
+        if column >= 31:
+            column = column - 31
+    column = 0 # Return to top left corner
+    row = 0
+
+print(tree_count)
+print(math.prod(tree_count))
+
+
+
+
+
+
 
 
 
